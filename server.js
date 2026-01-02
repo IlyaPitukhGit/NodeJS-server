@@ -88,6 +88,6 @@ app.use((req, res) => {
     res.status(404).type("html").send("<h1>Page Not Found</h1>");
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 });
