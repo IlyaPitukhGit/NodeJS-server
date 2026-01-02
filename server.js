@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8081;
 
-const city = "Kyiv";
+// const city = "Kyiv";
 //Ключ потрібно зберігати в змінних оточення (process.ENV)
 const APIKEY = process.env.APIKEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
@@ -62,7 +62,7 @@ app.get("/api/weather", async (req, res) => {
     const { city, units = "metric" } = req.query;
 
     if (!city) {
-        res.status(400).json({ message: "city parametr is required" });
+        return res.status(400).json({ message: "city parametr is required" });
     }
     try {
         const response = await axios.get(BASE_URL, {
@@ -79,7 +79,7 @@ app.get("/api/weather", async (req, res) => {
         } = response.data;
         res.json({ name, temp, description });
     } catch (error) {
-        res.status(501).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 });
 
