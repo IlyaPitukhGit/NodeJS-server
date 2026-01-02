@@ -2,6 +2,8 @@ import express from "express";
 import axios from "axios";
 import router from "./booksRouter.js";
 import dotenv from "dotenv";
+import cors from "cors";
+
 //Сторонній moddleware для логування
 import morgan from "morgan";
 
@@ -33,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //дозволяємо cross origin request на сервері
-var cors = require("cors");
+
 app.use(cors());
 
 //middleware для логування кастомний
