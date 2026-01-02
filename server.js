@@ -32,11 +32,15 @@ app.use(express.json());
 //для роботи з HTML формами
 app.use(express.urlencoded({ extended: true }));
 //Дозволяє зробити дерикторію на сервері публічною для того щоб дани до неї доступ
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 //дозволяємо cross origin request на сервері
 
 app.use(cors());
+
+app.get("/", (req, res) => {
+    res.status(200).json({ ok: true });
+});
 
 //middleware для логування кастомний
 app.use((req, res, next) => {
